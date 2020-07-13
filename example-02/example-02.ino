@@ -6,7 +6,6 @@
 
 #define FIRMWARE_VERSION "v0.0.1"
 
-
 const String default_ssid = "somessid";
 const String default_wifipassword = "mypassword";
 const String default_httpuser = "admin";
@@ -59,7 +58,6 @@ void setup() {
   config.httppassword = default_httppassword;
   config.webserverporthttp = default_webserverporthttp;
 
-
   Serial.print("\nConnecting to Wifi: ");
   WiFi.begin(config.ssid.c_str(), config.wifipassword.c_str());
   while (WiFi.status() != WL_CONNECTED) {
@@ -86,8 +84,8 @@ void setup() {
   server = new AsyncWebServer(config.webserverporthttp);
   configureWebServer();
 
-  Serial.println("Starting Webserver ...");
   // startup web server
+  Serial.println("Starting Webserver ...");
   server->begin();
 }
 
@@ -97,7 +95,6 @@ void loop() {
     rebootESP("Web Admin Initiated Reboot");
   }
 }
-
 
 void rebootESP(String message) {
   Serial.print("Rebooting ESP32: "); Serial.println(message);
@@ -116,7 +113,6 @@ String listFiles(bool ishtml) {
   while (foundfile) {
     if (ishtml) {
       returnText += "<tr align='left'><td>" + String(foundfile.name()) + "</td><td>" + humanReadableSize(foundfile.size()) + "</td>";
-      //"<td><a href='/file?name=" + String(foundfile.name()) + "&action=download'>Download</a></td><td><a href='/file?name=" + String(foundfile.name()) + "&action=delete'>Delete</a></td>";
       returnText += "<td><button onclick=\"downloadDeleteButton(\'" + String(foundfile.name()) + "\', \'download\')\">Download</button>";
       returnText += "<td><button onclick=\"downloadDeleteButton(\'" + String(foundfile.name()) + "\', \'delete\')\">Delete</button></tr>";
     } else {
