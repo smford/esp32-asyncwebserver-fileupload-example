@@ -3,9 +3,8 @@
 #include <ESPAsyncWebServer.h>
 #include <SPIFFS.h>
 
-
-const String default_ssid = "something";
-const String default_wifipassword = "somepass";
+const String default_ssid = "yourssid";
+const String default_wifipassword = "yourpassword";
 const int default_webserverporthttp = 80;
 
 const char index_html[] PROGMEM = R"rawliteral(
@@ -16,14 +15,17 @@ const char index_html[] PROGMEM = R"rawliteral(
   <meta charset="UTF-8">
 </head>
 <body>
-  <p>File Upload</p>
+  <p><h1>File Upload</h1></p>
   <p>Free Storage: %FREESPIFFS% | Used Storage: %USEDSPIFFS% | Total Storage: %TOTALSPIFFS%</p>
   <form method="POST" action="/upload" enctype="multipart/form-data"><input type="file" name="data"/><input type="submit" name="upload" value="Upload" title="Upload File"></form>
+  <p>After clicking upload it will take some time for the file to firstly upload and then be written to SPIFFS, there is no indicator that the upload began.  Please be patient.</p>
+  <p>Once uploaded the page will refresh and the newly uploaded file will appear in the file list.</p>
+  <p>If a file does not appear, it will be because the file was too big, or had an unusual characters in the file name (like spaces).</p>
+  <p>You can see the progress of the upload by watching the serial output.</p>
   <p>%FILELIST%</p>
 </body>
 </html>
 )rawliteral";
-
 
 String listFiles(bool ishtml = false);
 
@@ -37,7 +39,6 @@ struct Config {
 // variables
 Config config;                        // configuration
 AsyncWebServer *server;               // initialise webserver
-
 
 void setup() {
   Serial.begin(115200);
@@ -58,7 +59,7 @@ void setup() {
 
   Serial.println(listFiles());
 
-  Serial.println("Loading Configuration ...");
+  Serial.println("\nLoading Configuration ...");
 
   config.ssid = default_ssid;
   config.wifipassword = default_wifipassword;
@@ -83,10 +84,9 @@ void setup() {
   Serial.print("        DNS 1: "); Serial.println(WiFi.dnsIP(0));
   Serial.print("        DNS 2: "); Serial.println(WiFi.dnsIP(1));
   Serial.print("        DNS 3: "); Serial.println(WiFi.dnsIP(2));
-  Serial.println();
 
   // configure web server
-  Serial.println("Configuring Webserver ...");
+  Serial.println("\nConfiguring Webserver ...");
   server = new AsyncWebServer(config.webserverporthttp);
   configureWebServer();
 
@@ -145,7 +145,6 @@ void configureWebServer() {
   });
 
   // run handleUpload function when any file is uploaded
-  //server->onFileUpload(handleUpload);
   server->on("/upload", HTTP_POST, [](AsyncWebServerRequest *request) {
         request->send(200);
       }, handleUpload);
