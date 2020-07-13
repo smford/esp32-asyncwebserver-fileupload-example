@@ -21,8 +21,14 @@ const int default_webserverporthttp = 80;
 
 ## Screenshots
 <p align="center">
-  <img src="images/example-02-image-01.png" width="256">
-  <img src="images/example-02-image-02.png" width="256">
-  <img src="images/example-02-image-03.png" width="256">
-  <img src="images/example-02-image-04.png" width="256">
+  <img src="images/example-02-image-01.png" width="600">
+</p>
+<p align="center">
+  <img src="images/example-02-image-02.png" width="600">
+</p>
+<p align="center">
+  <img src="images/example-02-image-03.png" width="600">
+</p>
+<p align="center">
+  <img src="images/example-02-image-04.png" width="600">
 </p>
