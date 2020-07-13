@@ -4,8 +4,16 @@ This is hopefully a simple example to demonstrate how to upload a file to an ESP
 
 There are various instructions around the place, but they were all confusing and it took a long time to figure out what was needed, I hope these examples help someone.
 
-## Example 1 - A simple single webpage that allows uploading
-- the simplest of all the examples, nothing fancy here
+## Example 1 - Single Webpage, File Listing, Simple Upload
+- single webpage
+- file listing button
+- file upload button
+
+Example-02 is more complete and offers a better user experience, with this example there is no progress of file upload after clicking the upload button.
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/smford/esp32-asyncwebserver-fileupload-example/master/example-01/images/example-01-image-01.png" width="200">
+</p>
 
 ---
 
