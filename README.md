@@ -9,14 +9,15 @@ There are various instructions around the place, but they were all confusing and
 
 ---
 
-## Exmaple 2 - Index with an Upload Button with authentication
+## Example 2 - Single Webpage, Authentication, File Management, Upload with Progress Bar
 - web page authentication
 - single webpage
 - file listing button
 - file download button
 - file delete button
 - file upload button
-- all done on a single web page that gets updated via javascript
+- reboot esp32 button
+- all done on a single web page that updates webpage elements using javascript
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/smford/esp32-asyncwebserver-fileupload-example/master/example-02/images/example-02-image-01.png" width="200">
@@ -26,12 +27,3 @@ There are various instructions around the place, but they were all confusing and
 </p>
 
 ---
-
-## Example 3 - Fancy upload
-- web page authentication
-- single webpage
-- file listing button
-- file download button
-- file delete button
-- file upload button
-- all done on a single web page that gets updated via javascript

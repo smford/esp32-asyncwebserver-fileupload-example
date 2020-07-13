@@ -1,13 +1,12 @@
-# example-02
-
+## Example 2 - Single Webpage, Authentication, File Management, Upload with Progress Bar
 - web page authentication
 - single webpage
-- file listing
+- file listing button
 - file download button
 - file delete button
-- file upload button with upload progress status
-- reboot esp button
-- all done on a single web page that uses javascript to call /listfiles and /file?name=something&action=delete or /file?name=something&action=download
+- file upload button
+- reboot esp32 button
+- all done on a single web page that updates webpage elements using javascript
 
 ## Configuration
 Edit these variables at the beginning of example-02.ino
